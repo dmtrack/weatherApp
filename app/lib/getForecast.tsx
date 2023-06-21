@@ -1,7 +1,7 @@
 const url = process.env.BASE_URL;
 const apiKey = process.env.API_KEY;
 
-export default async function GetForecast(searchTerm: string) {
+export default async function getForecast(searchTerm: string) {
     const searchParams = new URLSearchParams({
         apikey: `${apiKey}`,
         location: searchTerm,
