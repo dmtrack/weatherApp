@@ -1,19 +1,16 @@
 const url = process.env.BASE_URL;
 const apiKey = process.env.API_KEY;
 
-export default async function GetForecast(searchTerm: string, days: number) {
+export default async function GetForecast(searchTerm: string) {
     const searchParams = new URLSearchParams({
-        key: `${apiKey}`,
-        q: searchTerm,
-        days: String(days),
-        alerts: 'no',
-        aqi: 'no',
+        apikey: `${apiKey}`,
+        location: searchTerm,
+        timesteps: '1d',
     });
-    const urlTest = `${url}/current.json?` + searchParams;
-    console.log(urlTest);
+    const urlTest = `${url}/forecast?` + searchParams;
 
     const fiveDayForecast = (
-        await fetch(`${url}/current.json?` + searchParams)
+        await fetch(`${url}/forecast?` + searchParams)
     ).json();
 
     return fiveDayForecast;
