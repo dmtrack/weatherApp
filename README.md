@@ -6,8 +6,8 @@ it is a web-app to collect info about weather in certain region, including 5-day
 
 ## Preview
 
-![Preview](assets/preview1.png)
-![Preview](assets/preview2.png)
+![Preview](../next05/app/assets/preview1.png)
+![Preview](../next05/app/assets/preview2.png)
 
 ## Stack
 
