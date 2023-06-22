@@ -17,7 +17,6 @@ interface NavigationProps {
 
 function Navigation({ navigationList }: NavigationProps) {
     const { isMenuOpen, closeMenu, toggleMenu } = useNavigation();
-
     const burgerClassName = cn(styles.burger, {
         [styles['burger--active']]: isMenuOpen,
     });

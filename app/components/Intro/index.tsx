@@ -9,7 +9,6 @@ import Typography from '../Typography';
 import introImage from '../../assets/images/intro-image.png';
 
 import styles from './Intro.module.scss';
-import Search from '../SearchOld/Search';
 
 function Intro() {
     return (
