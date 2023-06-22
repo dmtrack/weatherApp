@@ -1,6 +1,10 @@
-import './globals.css';
-import Navbar from './components/Navbar';
 import React from 'react';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+import './styles/reset.scss';
+import './styles/globals.scss';
 
 export const metadata = {
     title: 'WikiRock!',
@@ -14,8 +18,9 @@ export default function RootLayout({
 }) {
     return (
         <html lang='en'>
-            <body className='bg-slate-800'>
-                <Navbar />
+            <body>
+                <Header />
+                <Footer />
                 {children}
             </body>
         </html>

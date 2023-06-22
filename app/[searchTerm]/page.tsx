@@ -1,5 +1,5 @@
 import React from 'react';
-import { Metadata } from 'next';
+import { Metadata, ResolvingMetadata } from 'next';
 import getCurrentWeather from '../lib/getCurrentWeather';
 import getForecast from '../lib/getForecast';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,12 +10,9 @@ type Props = {
     };
 };
 
-// export async function generateMetaData({
-//     params: { searchTerm },
-// }: Props): Promise<Metadata> {
-//     const weatherData = getCurrentWeather(searchTerm);
+// export async function generateMetaData({ params: { searchTerm } }: Props) {
+//     const weatherData: Promise<WeatherType> = getCurrentWeather(searchTerm);
 //     const data = await weatherData;
-//     // const displayTerm = searchTerm.replaceAll('%20', ' ');
 
 //     return {
 //         title: data.location.name,
@@ -34,12 +31,12 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
             {
                 <>
                     {' '}
-                    <h1>City: {data.location.name}</h1>
+                    <h1>{data.location.name.split(',')[0]}</h1>
                     <p>Temperature:{data.data.values.temperature}</p>
                     {forecast.timelines.daily.map((d) => (
                         <div key={uuidv4()}>
-                            <p>Date: {d.time}</p>
-                            <p> Temperature: {d.values.temperatureAvg}</p>
+                            <div>Date: {d.time}</div>
+                            <div> Temperature: {d.values.temperatureAvg}</div>
                         </div>
                     ))}
                 </>
@@ -48,4 +45,4 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
     );
 }
 
-export const revalidate = 60; // revalidate this page every 60 seconds
+export const revalidate = 60;
