@@ -1,8 +1,10 @@
-import { Inter } from 'next/font/google';
 import React from 'react';
-
-const inter = Inter({ subsets: ['latin'] });
+import Intro from './components/Intro';
 
 export default function Home() {
-    return <main className={inter.className}></main>;
+    return (
+        <main>
+            <Intro />
+        </main>
+    );
 }

@@ -3,6 +3,7 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import styles from '../Search/Search.module.scss';
 
 export default function Search() {
     const [search, setSearch] = useState('');
@@ -15,9 +16,7 @@ export default function Search() {
     };
 
     return (
-        <form
-            className='w-50 flex justify-center md:justify-between'
-            onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <input
                 type='text'
                 value={search}

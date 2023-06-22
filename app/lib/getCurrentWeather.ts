@@ -8,7 +8,9 @@ export default async function getCurrentWeather(searchTerm: string) {
     });
 
     const currentWeather = (
-        await fetch(`${url}/realtime?` + searchParams)
+        await fetch(`${url}/realtime?` + searchParams, {
+            next: { revalidate: 60 },
+        })
     ).json();
 
     return currentWeather;
