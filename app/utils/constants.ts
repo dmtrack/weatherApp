@@ -3,8 +3,8 @@ import type { INavigationLinkItem, IFooterItem } from '../ts/interfaces';
 const navigationList: INavigationLinkItem[] = [
     {
         id: '1',
-        href: '#product',
-        text: 'Product',
+        href: '#Weather map',
+        text: 'Map',
     },
     {
         id: '2',
@@ -13,8 +13,8 @@ const navigationList: INavigationLinkItem[] = [
     },
     {
         id: '3',
-        href: '#about',
-        text: 'About',
+        href: '#contacts',
+        text: 'Contacts',
     },
 ];
 

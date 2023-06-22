@@ -6,10 +6,10 @@ import manrope from '../../utils/fonts/manrope';
 
 import Typography from '../Typography';
 
-import introImage from 'assets/images/intro-image.png';
-import authorPhoto from 'assets/images/chandler-bing-image.png';
+import introImage from '../../assets/images/intro-image.png';
 
 import styles from './Intro.module.scss';
+import Search from '../SearchOld/Search';
 
 function Intro() {
     return (
@@ -21,6 +21,7 @@ function Intro() {
                     color='dark-blue'>
                     Blog
                 </Typography>
+                {/* <Search /> */}
                 <Typography
                     variant='h1'
                     className={manrope.className}
