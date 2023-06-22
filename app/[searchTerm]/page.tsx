@@ -10,6 +10,7 @@ import openSans from '../utils/fonts/openSans';
 import manrope from '../utils/fonts/manrope';
 
 import styles from '../components/Intro/Intro.module.scss';
+import Chip from '../components/Chip';
 
 type Props = {
     params: {
@@ -22,6 +23,14 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
     const data = await weatherData;
     const forecastData: Promise<ForecastType> = getForecast(searchTerm);
     const forecast = await forecastData;
+
+    const date = (target) => new Date(target);
+    const modifiedForcast = await forecast.timelines.daily.map((el) => {
+        let d = date(el.time);
+        return `${d.getDate()}.${d.getMonth() + 1}: ${
+            el.values.temperatureMax
+        }`;
+    });
 
     return (
         <>
@@ -53,13 +62,26 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
                                 styles.infoBlocks
                             )}
                             align='left'>
-                            temp: <p>{data.data.values.temperature}°C</p>
-                            humidity: <p>{data.data.values.humidity}%</p>
-                            visibility: <p>{data.data.values.visibility}%</p>
-                            cloud-cover: <p>{data.data.values.cloudCover}%</p>
-                            wind-direction:{' '}
-                            <p>{data.data.values.windDirection}°</p>
-                            wind-speed: <p>{data.data.values.windSpeed}</p>
+                            <Chip
+                                label='temp'
+                                value={`${data.data.values.temperature}°C`}
+                            />
+                            <Chip
+                                label='humidity'
+                                value={`${data.data.values.humidity}%`}
+                            />{' '}
+                            <Chip
+                                label='visibility'
+                                value={`${data.data.values.visibility}%`}
+                            />
+                            <Chip
+                                label='cloud-cover'
+                                value={`${data.data.values.cloudCover}%`}
+                            />
+                            <Chip
+                                label='w-dir'
+                                value={`${data.data.values.windDirection}%`}
+                            />
                         </Typography>
                     </div>
                     <div className={styles.wrapper}>
@@ -74,18 +96,17 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
                         </div>
                         <div
                             className={cn(styles.forecast, openSans.className)}>
-                            {forecast.timelines.daily.map((d) => (
+                            {modifiedForcast.map((d) => (
                                 <Typography
                                     key={uuidv4()}
                                     variant='h3'
                                     className={openSans.className}
                                     align='left'>
                                     <Typography align='left'>
-                                        Date: {d.time}
-                                    </Typography>
-                                    <Typography align='left'>
-                                        {' '}
-                                        temp: {d.values.temperatureAvg} °C
+                                        <Chip
+                                            label={d.split(':')[0]}
+                                            value={`${d.split(':')[1]}°C`}
+                                        />
                                     </Typography>
                                 </Typography>
                             ))}{' '}

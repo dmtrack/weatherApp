@@ -78,9 +78,10 @@
 }
 
 .chip {
-    background-color: red;
+    background-color: $color-green;
+    color: $color-dark-blue;
     font-size: $font-size-s;
-    border-radius: 12px;
-    height: 15px;
-    width: 30px;
+    border-radius: 5px;
+    height: 40px;
+    padding: 5px 5px;
 }
