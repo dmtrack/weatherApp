@@ -1,13 +1,16 @@
 import styles from './Chip.module.scss';
 
 type ChipProps = {
-    text: string;
+    label?: string;
+    value: string | number;
 };
 
-function Chip({ text }: ChipProps) {
+function Chip({ label, value }: ChipProps) {
     return (
         <>
-            <div className={styles.chip}>{text}</div>
+            <span className={styles.chip}>
+                {label}: {value}
+            </span>
         </>
     );
 }
