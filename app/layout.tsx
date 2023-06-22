@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 
 import './styles/reset.scss';
 import './styles/globals.scss';
+import Search from './components/Search';
 
 export const metadata = {
     title: 'wOracle',
@@ -20,6 +21,7 @@ export default function RootLayout({
         <html lang='en'>
             <body>
                 <Header />
+                <Search />
                 {children}
                 <Footer />
             </body>

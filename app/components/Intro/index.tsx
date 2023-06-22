@@ -18,15 +18,15 @@ function Intro() {
                 <Typography
                     variant='p'
                     className={cn(styles.text, openSans.className)}
-                    color='dark-blue'>
+                    color='gray'>
                     Blog
                 </Typography>
                 {/* <Search /> */}
                 <Typography
-                    variant='h1'
+                    variant='h2'
                     className={manrope.className}
                     color='dark-blue'>
-                    Thoughts and words
+                    Thoughts and words about our world
                 </Typography>
             </div>
             <div className={styles.mainContainer}>
@@ -51,7 +51,7 @@ function Intro() {
                             fontWeight='regular'
                             className={openSans.className}
                             align='left'>
-                            November 22, 2021
+                            June 22, 2023
                         </Typography>
                     </div>
                     <Typography

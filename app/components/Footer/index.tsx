@@ -20,9 +20,9 @@ function Footer() {
                         color='gray'
                         className={cn(styles.text, openSans.className)}
                         align='left'>
-                        Social media validation business model canvas graphical
-                        user interface launch party creative facebook iPad
-                        twitter.
+                        We use cookies and similar tools across our websites to
+                        improve their performance and enhance your user
+                        experience. This policy explains how we do that
                     </Typography>
                     <Typography
                         color='gray'

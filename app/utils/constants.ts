@@ -19,21 +19,21 @@ const navigationList: INavigationLinkItem[] = [
 ];
 
 const footerLinkList: IFooterItem = {
-    Landings: [
+    Views: [
         {
             id: '1',
-            href: '#',
-            text: 'Home',
+            href: '#photo/autumn',
+            text: 'Autumn colors',
         },
         {
             id: '2',
-            href: '#product',
-            text: 'Products',
+            href: '#photo/rainbows',
+            text: 'Rainbows & Reflections',
         },
         {
             id: '3',
-            href: '#services',
-            text: 'Services',
+            href: '#photo/sunrises',
+            text: 'Sunrises & Sunsets',
         },
     ],
     Company: [
@@ -62,8 +62,8 @@ const footerLinkList: IFooterItem = {
         },
         {
             id: '2',
-            href: '#product',
-            text: 'Products',
+            href: '#map',
+            text: 'Map',
         },
         {
             id: '3',
