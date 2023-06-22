@@ -23,58 +23,73 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
     const forecastData: Promise<ForecastType> = getForecast(searchTerm);
     const forecast = await forecastData;
 
-    const time = await new Date();
-    console.log(time);
-
     return (
         <>
             <section className={styles.section}>
                 <div className={styles.topContainer}>
                     <Typography
-                        color='gray'
-                        fontWeight='regular'
+                        variant='h3'
+                        align='left'
                         className={openSans.className}
-                        align='left'>
-                        123{' '}
-                    </Typography>
-
-                    <Typography
-                        variant='h2'
-                        className={manrope.className}
-                        color='dark-blue'>
-                        {data.location.name.split(',')[0]}
-                    </Typography>
-                    <Typography
-                        variant='p'
-                        className={manrope.className}
-                        align='left'>
-                        Temperature:{data.data.values.temperature}{' '}
+                        color='gray'>
+                        {data.location.name.split(',')[0]},{' '}
+                        {data.location.name.split(',')[1]}
                     </Typography>
                 </div>
                 <div className={styles.mainContainer}>
+                    <div className={styles.weatherBlock}>
+                        <div className={styles.textWrapper}>
+                            <Typography
+                                align='left'
+                                variant='p'
+                                className={cn(styles.text, openSans.className)}
+                                color='dark-blue'>
+                                Today
+                            </Typography>
+                        </div>
+                        <Typography
+                            className={cn(
+                                openSans.className,
+                                styles.infoBlocks
+                            )}
+                            align='left'>
+                            temp: <p>{data.data.values.temperature}°C</p>
+                            humidity: <p>{data.data.values.humidity}%</p>
+                            visibility: <p>{data.data.values.visibility}%</p>
+                            cloud-cover: <p>{data.data.values.cloudCover}%</p>
+                            wind-direction:{' '}
+                            <p>{data.data.values.windDirection}°</p>
+                            wind-speed: <p>{data.data.values.windSpeed}</p>
+                        </Typography>
+                    </div>
                     <div className={styles.wrapper}>
                         <div className={styles.textWrapper}>
                             <Typography
+                                align='left'
                                 variant='p'
                                 className={cn(styles.text, openSans.className)}
                                 color='dark-blue'>
                                 5-days forecast
                             </Typography>
                         </div>
-                        <Typography
-                            variant='h3'
-                            className={manrope.className}
-                            align='left'>
+                        <div
+                            className={cn(styles.forecast, openSans.className)}>
                             {forecast.timelines.daily.map((d) => (
-                                <div key={uuidv4()}>
-                                    <div>Date: {d.time}</div>
-                                    <div>
+                                <Typography
+                                    key={uuidv4()}
+                                    variant='h3'
+                                    className={openSans.className}
+                                    align='left'>
+                                    <Typography align='left'>
+                                        Date: {d.time}
+                                    </Typography>
+                                    <Typography align='left'>
                                         {' '}
-                                        Temperature: {d.values.temperatureAvg}
-                                    </div>
-                                </div>
+                                        temp: {d.values.temperatureAvg} °C
+                                    </Typography>
+                                </Typography>
                             ))}{' '}
-                        </Typography>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.line} />
