@@ -43,7 +43,7 @@ function Intro() {
                             color='dark-blue'
                             fontWeight='bold'
                             className={openSans.className}>
-                            Category
+                            John Cramer
                         </Typography>
                         <Typography
                             color='gray'
@@ -57,7 +57,7 @@ function Intro() {
                         variant='h2'
                         className={manrope.className}
                         align='left'>
-                        Pitch termsheet backing validation focus release.
+                        Will we save our planet green for next gens?
                     </Typography>
                 </div>
             </div>

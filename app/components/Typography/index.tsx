@@ -15,6 +15,7 @@ interface TypographyProps extends DOMAttributes<HTMLParagraphElement> {
     align?: TextAlign;
     fontWeight?: FontWeight;
     children: React.ReactNode;
+    fontSize?: string;
     className?: string;
 }
 
@@ -23,6 +24,7 @@ function Typography({
     color = 'black',
     align = 'center',
     fontWeight = 'regular',
+    fontSize,
     children,
     className,
     ...props
