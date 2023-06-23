@@ -21,7 +21,7 @@ function Search() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSearch('');
-        router.push(`/${search}/`);
+        router.replace(`/weather/${search}`);
     };
 
     return (
