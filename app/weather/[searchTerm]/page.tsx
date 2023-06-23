@@ -1,16 +1,15 @@
 import React from 'react';
 import { Metadata, ResolvingMetadata } from 'next';
-import getCurrentWeather from '../lib/getCurrentWeather';
-import getForecast from '../lib/getForecast';
+import getCurrentWeather from '../../lib/getCurrentWeather';
+import getForecast from '../../lib/getForecast';
 import { v4 as uuidv4 } from 'uuid';
-import Typography from '../components/Typography';
+import Typography from '../../components/Typography';
 import cn from 'classnames';
 
-import openSans from '../utils/fonts/openSans';
-import manrope from '../utils/fonts/manrope';
+import openSans from '../../utils/fonts/openSans';
 
-import styles from '../components/Intro/Intro.module.scss';
-import Chip from '../components/Chip';
+import styles from '../../components/Intro/Intro.module.scss';
+import Chip from '../../components/Chip';
 
 type Props = {
     params: {
