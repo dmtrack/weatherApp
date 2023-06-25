@@ -1,3 +1,7 @@
+import axios, { AxiosResponse } from 'axios';
+import { ForecastResponse, ForecastType, WeatherType } from '../../types';
+import { get } from '../axios';
+
 const url = process.env.BASE_URL;
 const apiKey = process.env.API_KEY;
 
@@ -7,11 +11,10 @@ export default async function getForecast(searchTerm: string) {
         location: searchTerm,
         timesteps: '1d',
     });
-    const urlTest = `${url}/forecast?` + searchParams;
 
-    const fiveDayForecast = (
-        await fetch(`${url}/forecast?` + searchParams)
-    ).json();
+    const fiveDayForecast = await get<ForecastResponse>(
+        `${url}/forecast?` + searchParams
+    );
 
     return fiveDayForecast;
 }

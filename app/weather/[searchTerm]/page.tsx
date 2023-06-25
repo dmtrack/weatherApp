@@ -1,7 +1,5 @@
 import React from 'react';
-import { Metadata, ResolvingMetadata } from 'next';
-import getCurrentWeather from '../../lib/getCurrentWeather';
-import getForecast from '../../lib/getForecast';
+
 import { v4 as uuidv4 } from 'uuid';
 import Typography from '../../components/Typography';
 import cn from 'classnames';
@@ -10,6 +8,8 @@ import openSans from '../../utils/fonts/openSans';
 
 import styles from '../../components/Intro/Intro.module.scss';
 import Chip from '../../components/Chip';
+import { get } from '../../axios';
+import { WeatherContainer } from '../../../types';
 
 type Props = {
     params: {
@@ -18,12 +18,14 @@ type Props = {
 };
 
 export default async function SearchResults({ params: { searchTerm } }: Props) {
-    const weatherData: Promise<WeatherType> = getCurrentWeather(searchTerm);
-    const data = await weatherData;
-    const forecastData: Promise<ForecastType> = getForecast(searchTerm);
-    const forecast = await forecastData;
+    const weatherData: WeatherContainer = await get(
+        `${process.env.SERVER_URL}/api/weather/${searchTerm}`
+    );
 
+    const data = await weatherData;
+    const { forecast, weather } = data;
     const date = (target) => new Date(target);
+
     const modifiedForcast = await forecast.timelines.daily.map((el) => {
         let d = date(el.time);
         return `${d.getDate()}.${d.getMonth() + 1}: ${
@@ -40,8 +42,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
                         align='left'
                         className={openSans.className}
                         color='gray'>
-                        {data.location.name.split(',')[0]},{' '}
-                        {data.location.name.split(',')[1]}
+                        {weather.location.name}
                     </Typography>
                 </div>
                 <div className={styles.mainContainer}>
@@ -63,23 +64,23 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
                             align='left'>
                             <Chip
                                 label='temp'
-                                value={`${data.data.values.temperature}°C`}
+                                value={`${weather.current.temp_c}°C`}
                             />
                             <Chip
                                 label='humidity'
-                                value={`${data.data.values.humidity}%`}
+                                value={`${weather.current.humidity}%`}
                             />{' '}
                             <Chip
                                 label='visibility'
-                                value={`${data.data.values.visibility}%`}
+                                value={`${weather.current.vis_km}km`}
                             />
                             <Chip
-                                label='cloud-cover'
-                                value={`${data.data.values.cloudCover}%`}
+                                label='cloud'
+                                value={`${weather.current.cloud}%`}
                             />
                             <Chip
                                 label='w-dir'
-                                value={`${data.data.values.windDirection}%`}
+                                value={`${weather.current.wind_dir}°`}
                             />
                         </Typography>
                     </div>

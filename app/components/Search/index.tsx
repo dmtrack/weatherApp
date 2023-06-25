@@ -17,10 +17,12 @@ import { useRouter } from 'next/navigation';
 function Search() {
     const [search, setSearch] = useState('');
     const router = useRouter();
+    console.log('router', router);
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSearch('');
+
         router.replace(`/weather/${search}`);
     };
 
