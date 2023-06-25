@@ -19,7 +19,7 @@ type Props = {
 
 export default async function SearchResults({ params: { searchTerm } }: Props) {
     const weatherData: WeatherContainer = await get(
-        `${process.env.SERVER_URL}/${searchTerm}`
+        `${process.env.SERVER_URL}/api/weather/${searchTerm}`
     );
 
     const data = await weatherData;
