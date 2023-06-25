@@ -1,17 +1,16 @@
-const url = process.env.BASE_URL;
-const apiKey = process.env.API_KEY;
+import { get } from '../axios';
+
+const url = process.env.SECOND_URL;
+const apiKey = process.env.SECOND_API_KEY;
 
 export default async function getCurrentWeather(searchTerm: string) {
     const searchParams = new URLSearchParams({
-        location: searchTerm,
-        apikey: `${apiKey}`,
+        q: searchTerm,
+        key: `${apiKey}`,
+        aqi: 'no',
     });
 
-    const currentWeather = (
-        await fetch(`${url}/realtime?` + searchParams, {
-            next: { revalidate: 60 },
-        })
-    ).json();
+    const currentWeather = await get(`${url}/current.json?` + searchParams);
 
     return currentWeather;
 }
